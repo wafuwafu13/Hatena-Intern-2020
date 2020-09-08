@@ -1,12 +1,12 @@
 package renderer
 
 import (
+	"fmt"
 	"bytes"
 	"context"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/renderer/html"
 	gast "github.com/yuin/goldmark/ast"
-	"github.com/wafuwafu13/goldmark-tasklist-extension/ast"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer"
 	"github.com/yuin/goldmark/text"
@@ -33,7 +33,7 @@ func Render(ctx context.Context, src string) (string, error) {
 	return buf.String(), nil
 }
 
-var taskListRegexp = regexp.MustCompile(`^\[([\sxX])\]\s*`)
+var taskListRegexp = regexp.MustCompile(`^\[([\sxXyYzZ])\]\s*`)
 
 type taskCheckBoxParser struct {
 }
@@ -72,8 +72,9 @@ func (s *taskCheckBoxParser) Parse(parent gast.Node, block text.Reader, pc parse
 	value := line[m[2]:m[3]][0]
 	block.Advance(m[1])
 	checked := value == 'x' || value == 'X'
-	ranged := value == 'r' || value == 'R'
-	return ast.NewTaskCheckBox(checked, ranged)
+	ranged := value == 'y' || value == 'Y'
+	colored := value == 'z' || value == 'Z'
+	return NewTaskCheckBox(checked, ranged, colored)
 }
 
 func (s *taskCheckBoxParser) CloseBlock(parent gast.Node, pc parser.Context) {
@@ -99,20 +100,22 @@ func NewTaskCheckBoxHTMLRenderer(opts ...html.Option) renderer.NodeRenderer {
 
 // RegisterFuncs implements renderer.NodeRenderer.RegisterFuncs.
 func (r *TaskCheckBoxHTMLRenderer) RegisterFuncs(reg renderer.NodeRendererFuncRegisterer) {
-	reg.Register(ast.KindTaskCheckBox, r.renderTaskCheckBox)
+	reg.Register(KindTaskCheckBox, r.renderTaskCheckBox)
 }
 
 func (r *TaskCheckBoxHTMLRenderer) renderTaskCheckBox(w util.BufWriter, source []byte, node gast.Node, entering bool) (gast.WalkStatus, error) {
 	if !entering {
 		return gast.WalkContinue, nil
 	}
-	n := node.(*ast.TaskCheckBox)
+	n := node.(*TaskCheckBox)
 
 	if n.IsChecked {
 		w.WriteString(`<input type="checkbox"`)
 	} else if n.IsRanged {
 		w.WriteString(`<input type="range"`)
-	} else {
+	} else if n.IsColored {
+		w.WriteString(`<input type="color"`)
+	}else {
 		w.WriteString(`<input disabled="" type="checkbox"`)
 	}
 	if r.XHTML {
@@ -136,4 +139,38 @@ func (e *taskList) Extend(m goldmark.Markdown) {
 	m.Renderer().AddOptions(renderer.WithNodeRenderers(
 		util.Prioritized(NewTaskCheckBoxHTMLRenderer(), 500),
 	))
+}
+
+// returns a new TaskCheckBox node.
+
+type TaskCheckBox struct {
+	gast.BaseInline
+	IsChecked bool
+	IsRanged bool
+	IsColored bool
+}
+
+// Dump implements Node.Dump.
+func (n *TaskCheckBox) Dump(source []byte, level int) {
+	m := map[string]string{
+		"Checked": fmt.Sprintf("%v", n.IsChecked),
+	}
+	gast.DumpHelper(n, source, level, m, nil)
+}
+
+// KindTaskCheckBox is a NodeKind of the TaskCheckBox node.
+var KindTaskCheckBox = gast.NewNodeKind("TaskCheckBox")
+
+// Kind implements Node.Kind.
+func (n *TaskCheckBox) Kind() gast.NodeKind {
+	return KindTaskCheckBox
+}
+
+// NewTaskCheckBox returns a new TaskCheckBox node.
+func NewTaskCheckBox(checked bool, ranged bool, colored bool) *TaskCheckBox {
+	return &TaskCheckBox{
+		IsChecked: checked,
+		IsRanged: ranged,
+		IsColored: colored,
+	}
 }
