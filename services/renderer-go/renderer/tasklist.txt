@@ -1,0 +1,28 @@
+1
+//- - - - - - - - -//
+- [ ] foo
+- [x] bar
+//- - - - - - - - -//
+<ul>
+<li><input disabled="" type="checkbox"> foo</li>
+<li><input type="checkbox"> bar</li>
+</ul>
+//= = = = = = = = = = = = = = = = = = = = = = = =//
+
+2
+//- - - - - - - - -//
+- [y] foo
+//- - - - - - - - -//
+<ul>
+<li><input type="range"> foo</li>
+</ul>
+//= = = = = = = = = = = = = = = = = = = = = = = =//
+
+3
+//- - - - - - - - -//
+- [z] foo
+//- - - - - - - - -//
+<ul>
+<li><input type="color"> foo</li>
+</ul>
+//= = = = = = = = = = = = = = = = = = = = = = = =//
