@@ -19,7 +19,7 @@ func NewServer() *Server {
 	return &Server{}
 }
 
-// Fetch は受け取った文書を HTML に変換する
+// Fetch は受け取ったURLからタイトルを取得して返す
 func (s *Server) Fetch(ctx context.Context, in *pb.FetcherRequest) (*pb.FetcherReply, error) {
 	title, err := fetcher.Fetch(ctx, in.Src)
 	if err != nil {

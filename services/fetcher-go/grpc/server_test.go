@@ -8,10 +8,19 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func Test_Server_Fetch(t *testing.T) {
+func Test_Server_Fetch_Normaly(t *testing.T) {
 	s := NewServer()
-	src := `foo https://google.com/ bar`
+	src := "https://example.com/"
 	reply, err := s.Fetch(context.Background(), &pb.FetcherRequest{Src: src})
 	assert.NoError(t, err)
-	assert.Equal(t, "foo <a href=\"https://google.com/\">https://google.com/</a> bar", reply.Title)
+	assert.Equal(t, "Example Domain", reply.Title)
+}
+
+func Test_Server_Fetch_Anormaly(t *testing.T) {
+	s := NewServer()
+	src := "https://hogehoge/"
+	reply, err := s.Fetch(context.Background(), &pb.FetcherRequest{Src: src})
+	assert.Error(t, err)
+	// TODO
+	assert.Equal(t, "https://hogehoge/", reply.Title)
 }
