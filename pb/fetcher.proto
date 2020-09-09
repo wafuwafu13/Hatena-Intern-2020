@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package fetcher;
+
+service Fetcher {
+    rpc Fetcher(FetcherRequest) returns (FetcherReply);
+}
+
+message FetcherRequest {
+    string src = 1;
+}
+
+message FetcherReply {
+    string title = 1;
+}
