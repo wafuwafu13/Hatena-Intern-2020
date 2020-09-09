@@ -1,25 +1,20 @@
 package fetcher
 
 import (
-	"bytes"
 	"context"
-	"html/template"
-	"regexp"
+	"github.com/PuerkitoBio/goquery"
 )
 
-var urlRE = regexp.MustCompile(`https?://[^\s]+`)
-var linkTmpl = template.Must(template.New("link").Parse(`<a href="{{.}}">{{.}}</a>`))
-
-// Fetch は受け取った文書を HTML に変換する
+// Fetch は受け取ったURLからタイトルを取得して返す
 func Fetch(ctx context.Context, src string) (string, error) {
-	// TODO: これはサンプル実装 (URL の自動リンク) です
-	html := urlRE.ReplaceAllStringFunc(src, func(url string) string {
-		var w bytes.Buffer
-		err := linkTmpl.ExecuteTemplate(&w, "link", url)
-		if err != nil {
-			return url
-		}
-		return w.String()
+	doc, err := goquery.NewDocument(src)
+    if err != nil {
+        return src, err
+	}
+	var title string
+	doc.Find("head").Each(func(i int, s *goquery.Selection) {
+		title = s.Find("title").Text()
 	})
-	return html, nil
+
+	return title, nil
 }
