@@ -11,7 +11,11 @@ RUN --mount=type=cache,target=/root/.cache/go-build make build
 
 FROM alpine
 
-COPY --from=builder /services/blog/bin/server /services/blog/bin/server
+RUN GRPC_HEALTH_PROBE_VERSION=v0.3.2 && \
+    wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
+    chmod +x /bin/grpc_health_probe
+
+COPY --from=builder /services/fetcher-go/bin/server /services/fetcher-go/bin/server
 
 RUN adduser -D -u 1000 app
 USER 1000
