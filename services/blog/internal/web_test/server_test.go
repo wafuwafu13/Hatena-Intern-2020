@@ -8,11 +8,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hatena/Hatena-Intern-2020/services/blog/app"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/domain"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/internal/testutil"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/repository"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/web"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/app"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/domain"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/internal/testutil"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/repository"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/web"
 	"github.com/jmoiron/sqlx"
 	"github.com/stretchr/testify/assert"
 )

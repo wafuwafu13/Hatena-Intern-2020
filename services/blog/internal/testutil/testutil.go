@@ -12,10 +12,10 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql" // MySQL ドライバを使うために必要
-	"github.com/hatena/Hatena-Intern-2020/services/blog/db"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/domain"
-	pb_account "github.com/hatena/Hatena-Intern-2020/services/blog/pb/account"
-	pb_renderer "github.com/hatena/Hatena-Intern-2020/services/blog/pb/renderer"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/db"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/domain"
+	pb_account "github.com/wafuwafu/Hatena-Intern-2020/services/blog/pb/account"
+	pb_renderer "github.com/wafuwafu/Hatena-Intern-2020/services/blog/pb/renderer"
 	"github.com/jmoiron/sqlx"
 	"github.com/lestrrat-go/jwx/jwa"
 	"github.com/lestrrat-go/jwx/jwt"

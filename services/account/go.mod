@@ -1,4 +1,4 @@
-module github.com/hatena/Hatena-Intern-2020/services/account
+module github.com/wafuwafu/Hatena-Intern-2020/services/account
 
 go 1.14
 

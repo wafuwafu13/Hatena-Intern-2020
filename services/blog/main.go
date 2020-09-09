@@ -11,13 +11,13 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql" // MySQL ドライバを使うために必要
-	"github.com/hatena/Hatena-Intern-2020/services/blog/app"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/config"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/db"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/log"
-	pb_account "github.com/hatena/Hatena-Intern-2020/services/blog/pb/account"
-	pb_renderer "github.com/hatena/Hatena-Intern-2020/services/blog/pb/renderer"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/web"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/app"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/config"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/db"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/log"
+	pb_account "github.com/wafuwafu/Hatena-Intern-2020/services/blog/pb/account"
+	pb_renderer "github.com/wafuwafu/Hatena-Intern-2020/services/blog/pb/renderer"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/web"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 )

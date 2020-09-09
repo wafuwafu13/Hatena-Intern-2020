@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/hatena/Hatena-Intern-2020/services/account/domain"
-	"github.com/hatena/Hatena-Intern-2020/services/account/internal/testutil"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/domain"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/internal/testutil"
 	"github.com/stretchr/testify/assert"
 )
 

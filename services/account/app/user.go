@@ -4,8 +4,8 @@ import (
 	"context"
 	"regexp"
 
-	"github.com/hatena/Hatena-Intern-2020/services/account/domain"
-	"github.com/hatena/Hatena-Intern-2020/services/account/repository"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/domain"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/repository"
 )
 
 var userNameRE = regexp.MustCompile(`^[0-9A-Za-z]{3,16}$`)

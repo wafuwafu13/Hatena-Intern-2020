@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/hatena/Hatena-Intern-2020/services/account/internal/testutil"
-	pb "github.com/hatena/Hatena-Intern-2020/services/account/pb/account"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/internal/testutil"
+	pb "github.com/wafuwafu/Hatena-Intern-2020/services/account/pb/account"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

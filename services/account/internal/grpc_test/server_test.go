@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hatena/Hatena-Intern-2020/services/account/app"
-	"github.com/hatena/Hatena-Intern-2020/services/account/grpc"
-	"github.com/hatena/Hatena-Intern-2020/services/account/internal/testutil"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/app"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/grpc"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/internal/testutil"
 	"github.com/jmoiron/sqlx"
 	"github.com/lestrrat-go/jwx/jwa"
 	"github.com/lestrrat-go/jwx/jwt"

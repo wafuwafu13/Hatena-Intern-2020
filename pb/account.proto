@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/hatena/Hatena-Intern-2020/pb/go/account"; // fake
+option go_package = "github.com/wafuwafu/Hatena-Intern-2020/pb/go/account"; // fake
 package account;
 
 service Account {

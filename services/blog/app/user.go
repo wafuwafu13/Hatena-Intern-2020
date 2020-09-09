@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hatena/Hatena-Intern-2020/services/blog/domain"
-	pb_account "github.com/hatena/Hatena-Intern-2020/services/blog/pb/account"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/repository"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/domain"
+	pb_account "github.com/wafuwafu/Hatena-Intern-2020/services/blog/pb/account"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/repository"
 	"github.com/lestrrat-go/jwx/jwa"
 	"github.com/lestrrat-go/jwx/jwt"
 	"google.golang.org/grpc/codes"

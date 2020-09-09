@@ -1,4 +1,4 @@
-module github.com/hatena/Hatena-Intern-2020/services/blog
+module github.com/wafuwafu/Hatena-Intern-2020/services/blog
 
 go 1.14
 
