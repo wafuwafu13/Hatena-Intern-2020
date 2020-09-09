@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hatena/Hatena-Intern-2020/services/blog/app"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/internal/testutil"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/app"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/internal/testutil"
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 )

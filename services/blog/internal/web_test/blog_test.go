@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/hatena/Hatena-Intern-2020/services/blog/internal/testutil"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/internal/testutil"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hatena/Hatena-Intern-2020/services/account/internal/testutil"
-	"github.com/hatena/Hatena-Intern-2020/services/account/repository"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/internal/testutil"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/repository"
 	"github.com/jmoiron/sqlx"
 )
 

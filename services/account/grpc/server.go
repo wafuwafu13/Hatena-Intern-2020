@@ -3,8 +3,8 @@ package grpc
 import (
 	"crypto/ecdsa"
 
-	"github.com/hatena/Hatena-Intern-2020/services/account/app"
-	pb "github.com/hatena/Hatena-Intern-2020/services/account/pb/account"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/app"
+	pb "github.com/wafuwafu/Hatena-Intern-2020/services/account/pb/account"
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
 )
 

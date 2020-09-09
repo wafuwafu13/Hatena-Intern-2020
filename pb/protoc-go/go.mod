@@ -1,4 +1,4 @@
-module github.com/hatena/Hatena-Intern-2020/pb/protoc-go
+module github.com/wafuwafu/Hatena-Intern-2020/pb/protoc-go
 
 go 1.14
 

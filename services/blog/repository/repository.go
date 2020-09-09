@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/hatena/Hatena-Intern-2020/services/blog/domain"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/domain"
 	"github.com/jmoiron/sqlx"
 )
 

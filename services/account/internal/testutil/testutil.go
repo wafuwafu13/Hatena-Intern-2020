@@ -7,7 +7,7 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql" // MySQL ドライバを使うために必要
-	"github.com/hatena/Hatena-Intern-2020/services/account/db"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/account/db"
 	"github.com/jmoiron/sqlx"
 )
 

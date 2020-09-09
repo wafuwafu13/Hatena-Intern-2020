@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"unicode/utf8"
 
-	"github.com/hatena/Hatena-Intern-2020/services/blog/domain"
-	"github.com/hatena/Hatena-Intern-2020/services/blog/repository"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/domain"
+	"github.com/wafuwafu/Hatena-Intern-2020/services/blog/repository"
 )
 
 // ListBlogs は全ユーザーのブログを検索する

@@ -6,8 +6,8 @@ import (
 
 	"github.com/jmoiron/sqlx"
 
-	pb_account "github.com/hatena/Hatena-Intern-2020/services/blog/pb/account"
-	pb_renderer "github.com/hatena/Hatena-Intern-2020/services/blog/pb/renderer"
+	pb_account "github.com/wafuwafu/Hatena-Intern-2020/services/blog/pb/account"
+	pb_renderer "github.com/wafuwafu/Hatena-Intern-2020/services/blog/pb/renderer"
 )
 
 // App はアプリケーションを表す
