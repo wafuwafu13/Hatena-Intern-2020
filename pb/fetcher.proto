@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+option go_package = "github.com/wafuwafu/Hatena-Intern-2020/pb/go/fetcher"; // fake
 package fetcher;
 
 service Fetcher {
