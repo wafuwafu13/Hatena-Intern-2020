@@ -8,6 +8,7 @@ cd "$base_dir"
 
 docker build protoc-go -t hatena-intern-2020-protoc-go
 docker build protoc-ts -t hatena-intern-2020-protoc-ts
+docker build protoc-python -t hatena-intern-2020-protoc-python
 
 mkdir -p go/account ts/account
 docker run -v "$(pwd):/pb" -w /pb --rm hatena-intern-2020-protoc-go \
@@ -53,3 +54,10 @@ docker run -v "$(pwd):/pb" -w /pb --rm hatena-intern-2020-protoc-go \
 mkdir -p ../services/fetcher-go/pb ../services/renderer-go/pb
 cp -r ./go/fetcher ../services/fetcher-go/pb
 cp -r ./go/fetcher ../services/renderer-go/pb
+
+mkdir -p python/inspect
+docker run -v "$(pwd):/pb" -w /pb --rm hatena-intern-2020-protoc-python \
+    python3 -m grpc_tools.protoc -I./ --python_out=./python/inspect --grpc_python_out=./python/inspect inspect.proto
+mkdir -p ../services/inspect/pb
+cp -r ./python/inspect ../services/fetcher-go/pb
+cp -r ./python/inspect ../services/renderer-go/pb
