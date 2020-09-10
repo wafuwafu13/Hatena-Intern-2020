@@ -14,8 +14,8 @@ type linker struct {
 	app my_app.App
 }
 
-func newLinker(app my_app.App) *linker {
-	return &linker{app: app}
+func NewLinker(ctx context.Context, app my_app.App) *linker {
+	return &linker{ctx: ctx, app: app}
 }
 
 func (l *linker) Transform(node *ast.Document, reader text.Reader, pc parser.Context) {
@@ -23,6 +23,7 @@ func (l *linker) Transform(node *ast.Document, reader text.Reader, pc parser.Con
 	    if node, ok := node.(*ast.Link); ok && entering && node.ChildCount() == 0 {
 	    	title, err := l.app.Fetch(l.ctx, string(node.Destination))
 	    	if err != nil {
+				// fmt.Println(err)
 	    		title = string(node.Destination)
 	    	}
 	    	node.AppendChild(node, ast.NewString([]byte(title)))

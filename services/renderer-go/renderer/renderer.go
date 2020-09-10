@@ -12,10 +12,10 @@ import (
 
 // Render は受け取った文書を HTML に変換する
 func Render(ctx context.Context, src string, app my_app.App) (string, error) {
-	var markdown = goldmark.New(
+	markdown := goldmark.New(
 		goldmark.WithParserOptions(
 			parser.WithASTTransformers(
-				util.Prioritized(&linker{ctx, app}, 999),
+				util.Prioritized(NewLinker(ctx, app), 999),
 			),
 		),
 		goldmark.WithRendererOptions(
@@ -31,6 +31,5 @@ func Render(ctx context.Context, src string, app my_app.App) (string, error) {
 	if err := markdown.Convert([]byte(src), &buf); err != nil {
 		return "", err
 	} 
-
 	return buf.String(), nil
 }
