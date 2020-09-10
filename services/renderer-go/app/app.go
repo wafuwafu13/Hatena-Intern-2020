@@ -15,7 +15,7 @@ func NewApp(fetcherClient pb_fetcher.FetcherClient) *App {
 }
 
 func (a *App) Fetch(ctx context.Context, src string) (string, error) {
-	reply, err := a.FetcherClient.Fetcher(ctx, &pb_fetcher.FetcherRequest{Src: src})
+	reply, err := a.FetcherClient.Fetch(ctx, &pb_fetcher.FetcherRequest{Src: src})
 	if err != nil {
 		return "", err
 	}

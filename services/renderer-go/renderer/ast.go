@@ -53,6 +53,7 @@ func (s *taskCheckBoxParser) Parse(parent gast.Node, block text.Reader, pc parse
 	checked := value == 'x' || value == 'X'
 	ranged := value == 'y' || value == 'Y'
 	colored := value == 'z' || value == 'Z'
+	fmt.Println(value)
 	return NewTaskCheckBox(checked, ranged, colored)
 }
 

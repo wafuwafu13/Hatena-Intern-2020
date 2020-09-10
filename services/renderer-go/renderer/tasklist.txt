@@ -5,7 +5,7 @@
 //- - - - - - - - -//
 <ul>
 <li><input disabled="" type="checkbox"> foo</li>
-<li><input type="checkbox"> bar</li>
+<li><input checked="" type="checkbox"> bar</li>
 </ul>
 //= = = = = = = = = = = = = = = = = = = = = = = =//
 
