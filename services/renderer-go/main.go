@@ -21,6 +21,8 @@ import (
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
+	pb_fetcher "github.com/wafuwafu/Hatena-Intern-2020/services/renderer-go/pb/fetcher"
+	my_app "github.com/wafuwafu/Hatena-Intern-2020/services/renderer-go/app"
 )
 
 func main() {
@@ -36,6 +38,16 @@ func run(args []string) error {
 	if err != nil {
 		return fmt.Errorf("failed to load config: %+v", err)
 	}
+
+	fetcherConn, err := grpc.Dial(conf.FetcherAddr, grpc.WithInsecure(), grpc.WithBlock())
+	if err != nil {
+		return fmt.Errorf("failed to connect to fetcher service: %+v", err)
+	}
+	defer fetcherConn.Close()
+	fetcherCli := pb_fetcher.NewFetcherClient(fetcherConn)
+
+	// initialize application
+	app := my_app.NewApp(fetcherCli)
 
 	// ロガーを初期化
 	logger, err := log.NewLogger(log.Config{Mode: conf.Mode})
@@ -63,7 +75,7 @@ func run(args []string) error {
 			grpc_recovery.UnaryServerInterceptor(),
 		)),
 	)
-	svr := server.NewServer()
+	svr := server.NewServer(*app)
 	pb.RegisterRendererServer(s, svr)
 	healthpb.RegisterHealthServer(s, svr)
 	go stop(s, conf.GracefulStopTimeout, logger)

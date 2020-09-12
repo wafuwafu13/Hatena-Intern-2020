@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package inspect;
+
+service Inspect {
+    rpc Inspect(InspectRequest) returns (InspectReply);
+}
+
+message InspectRequest {
+    string url = 1;
+}
+
+message InspectReply {
+    bool canfetch = 1;
+}
